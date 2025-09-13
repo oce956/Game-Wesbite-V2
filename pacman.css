@@ -54,15 +54,13 @@ body {
 
 /* Mobile controls */
 /* Overlay controls */
+/* Remove absolute positioning for controls */
 .controls {
-  position: absolute;
-  bottom: 12px;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  pointer-events: auto; /* ensure buttons are clickable */
-  z-index: 10;
 }
 
 .middle-row {
@@ -91,6 +89,28 @@ body {
 
 /* Mobile tweaks */
 @media (max-width: 600px) {
+  .controls button {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+}
+
+
+/* Hide controls by default (desktop) */
+.controls {
+  display: none;
+}
+
+/* Show only on mobile */
+@media (max-width: 600px) {
+  .controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    width: 100%;
+  }
+
   .controls button {
     font-size: 16px;
     padding: 10px 14px;

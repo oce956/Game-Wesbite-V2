@@ -63,42 +63,55 @@ window.onload = function () {
 
   document.getElementById("start-btn").addEventListener("click", startGame);
 
-  // touch drag
+  // --- Touch controls ---
   board.addEventListener("touchstart", (e) => {
+    if (gameOver) {
+      startGame();
+      return; // prevent drag when restarting
+    }
     isDragging = true;
     lastX = e.touches[0].clientX;
   });
+
   board.addEventListener("touchmove", (e) => {
-    if (isDragging) {
+    if (isDragging && !gameOver) {
       const deltaX = e.touches[0].clientX - lastX;
       doodler.x += deltaX;
       lastX = e.touches[0].clientX;
     }
   });
+
   board.addEventListener("touchend", () => { isDragging = false; });
 
-  // mouse drag
+  // --- Mouse controls ---
   board.addEventListener("mousedown", (e) => {
+    if (gameOver) {
+      startGame();
+      return; // prevent drag when restarting
+    }
     isDragging = true;
     lastX = e.clientX;
   });
+
   board.addEventListener("mousemove", (e) => {
-    if (isDragging) {
+    if (isDragging && !gameOver) {
       const deltaX = e.clientX - lastX;
       doodler.x += deltaX;
       lastX = e.clientX;
     }
   });
+
   board.addEventListener("mouseup", () => { isDragging = false; });
   board.addEventListener("mouseleave", () => { isDragging = false; });
 
-  // keyboard restart
+  // --- Keyboard restart ---
   document.addEventListener("keydown", (e) => {
     if (e.code === "Space" && gameOver) {
       startGame();
     }
   });
 };
+
 
 function resizeBoard() {
   let container = board.parentElement;

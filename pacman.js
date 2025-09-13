@@ -206,8 +206,8 @@ function loadMap(){
     for(let r = 0; r < rowCount; r++){
         for(let c = 0; c < columnCount; c++){
             const tileMapChar = tileMap[r][c];
-            const x = c * tileSize;
-            const y = r * tileSize;
+            const x = c*32;
+            const y = r*32;
 
             if(tileMapChar == "X"){
                 walls.add(new Block(wallImage, x, y, 32, 32));
@@ -402,9 +402,8 @@ window.onload = function(){
     pacmanBestScore = parseInt(localStorage.getItem("pacmanBestScore") || 0);
 
     loadImages();
-    setupBoard();  // calculates tileSize first
-    loadMap();     // builds the map with correct tileSize
-
+    loadMap();
+    setupBoard();
 
     for(let ghost of ghosts.values()){
         ghost.updateDirection(directions[Math.floor(Math.random()*4)]);

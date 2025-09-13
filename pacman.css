@@ -1,0 +1,98 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #16213e;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 608px;
+  max-height: 95vh;
+  position: relative; /* new */
+}
+
+
+/* Canvas */
+#board {
+  width: 100%;
+  height: auto;
+  background-color: black;
+  border: 2px solid #0f3460;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Reset Button */
+#reset {
+  margin-top: 12px;
+  background-color: cornflowerblue;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#reset:hover {
+  background-color: royalblue;
+  transform: scale(1.05);
+}
+
+#reset:active {
+  background-color: midnightblue;
+  transform: scale(0.98);
+}
+
+/* Mobile controls */
+/* Overlay controls */
+.controls {
+  position: absolute;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  pointer-events: auto; /* ensure buttons are clickable */
+  z-index: 10;
+}
+
+.middle-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.controls button {
+  background-color: rgba(100,149,237,0.8); /* semi-transparent */
+  color: white;
+  font-size: 18px;
+  padding: 12px 16px;
+  margin: 4px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.controls button:active {
+  background-color: rgba(65,105,225,0.9);
+  transform: scale(0.95);
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .controls button {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+}
